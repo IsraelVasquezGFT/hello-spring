@@ -18,4 +18,9 @@ public class DemoProjectApplication {
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return String.format("Hello %s!", name);
 	}
+
+	@GetMapping("/")
+	public String MetodoRaiz(@RequestParam(value = "nombreEmpresa", defaultValue = "GFT") String nombreEmpresa) {
+		return String.format("Bienvenido a la pagina de %s!", nombreEmpresa);
+	}
 }
