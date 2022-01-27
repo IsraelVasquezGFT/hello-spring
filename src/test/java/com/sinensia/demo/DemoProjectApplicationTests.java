@@ -29,4 +29,9 @@ class DemoProjectApplicationTests {
 		assertThat(restTemplate.getForObject("/", String.class)).isEqualTo("Bienvenido a la pagina de GFT!");
 	}
 
+	@Test
+	void rootTestHello(@Autowired TestRestTemplate restTemplate) {
+		assertThat(restTemplate.getForObject("/hello", String.class)).isEqualTo("Hello World!");
+	}
+
 }
