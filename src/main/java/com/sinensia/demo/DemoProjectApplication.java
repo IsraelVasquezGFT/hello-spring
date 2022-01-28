@@ -2,6 +2,7 @@ package com.sinensia.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,4 +24,10 @@ public class DemoProjectApplication {
 	public String MetodoRaiz(@RequestParam(value = "nombreEmpresa", defaultValue = "GFT") String nombreEmpresa) {
 		return String.format("Bienvenido a la pagina de %s!", nombreEmpresa);
 	}
+
+	@GetMapping("/add")
+	public int canAdd(@RequestParam int a,@RequestParam int b) {
+		return a + b;
+	}
+
 }
