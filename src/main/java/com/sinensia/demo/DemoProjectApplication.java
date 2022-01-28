@@ -26,7 +26,7 @@ public class DemoProjectApplication {
 	}
 
 	@GetMapping("/add")
-	public int canAdd(@RequestParam int a,@RequestParam int b) {
+	public int canAdd(@RequestParam (value="a", defaultValue = "0") int a, @RequestParam (value="b", defaultValue = "0") int b) {
 		return a + b;
 	}
 
