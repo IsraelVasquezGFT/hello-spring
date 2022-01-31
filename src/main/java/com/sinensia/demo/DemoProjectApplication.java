@@ -46,4 +46,24 @@ public class DemoProjectApplication {
 		return product.intValue();
 	}
 
+	@GetMapping("/div")
+	public Object dividir(@RequestParam (value="a", defaultValue = "0") Float a, @RequestParam (value="b", defaultValue = "0") Float b) {
+		Float product = a / b;
+		Float decimals = product - product.intValue();
+		if(decimals!=0){
+			return product;
+		}
+		return product.intValue();
+	}
+
+	@GetMapping("/subtract")
+	public Object subtract(@RequestParam (value="a", defaultValue = "0") Float a, @RequestParam (value="b", defaultValue = "0") Float b) {
+		Float product = a - b;
+		Float decimals = product - product.intValue();
+		if(decimals!=0){
+			return product;
+		}
+		return product.intValue();
+	}
+
 }

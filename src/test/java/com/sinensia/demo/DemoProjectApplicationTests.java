@@ -181,4 +181,44 @@ class DemoProjectApplicationTests {
 		}
 	}
 
+	@Nested
+	@DisplayName("Dividir Tests")
+	class DividirTests {
+		@DisplayName("dividir")
+		@ParameterizedTest(name="[{index}] {0} + {1} = {2}")
+		@CsvSource({
+				"1,   2,   0.5",
+				"1,   1,   1",
+				"1.0, 1.0, 1",
+				"1,  -2,  -0.5",
+				"1.5, 2,   0.75",
+				"'',  2,   0",
+				"1.5, 1.5, 1"
+		})
+		void canDividir(String a, String b, String expected) {
+			assertThat(restTemplate.getForObject("/div?a="+a+"&b="+b, String.class))
+					.isEqualTo(expected);
+		}
+	}
+
+	@Nested
+	@DisplayName("Subtract Tests")
+	class SubtractTests {
+		@DisplayName("Subtract")
+		@ParameterizedTest(name="[{index}] {0} + {1} = {2}")
+		@CsvSource({
+				"1,   2,   -1",
+				"1,   1,   0",
+				"1.0, 1.0, 0",
+				"1,  -2,  3",
+				"1.5, 2,   -0.5",
+				"'',  2,   -2",
+				"1.5, 1.5, 0"
+		})
+		void canSubtract(String a, String b, String expected) {
+			assertThat(restTemplate.getForObject("/subtract?a="+a+"&b="+b, String.class))
+					.isEqualTo(expected);
+		}
+	}
+
 }
