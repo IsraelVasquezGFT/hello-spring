@@ -15,19 +15,25 @@ public class DemoProjectApplication {
 		SpringApplication.run(DemoProjectApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
-
 	@GetMapping("/")
 	public String MetodoRaiz(@RequestParam(value = "nombreEmpresa", defaultValue = "GFT") String nombreEmpresa) {
 		return String.format("Bienvenido a la pagina de %s!", nombreEmpresa);
 	}
 
+	@GetMapping("/hello")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return String.format("Hello %s!", name);
+	}
+
+
 	@GetMapping("/add")
-	public int canAdd(@RequestParam (value="a", defaultValue = "0") int a, @RequestParam (value="b", defaultValue = "0") int b) {
-		return a + b;
+	public Object canAdd(@RequestParam (value="a", defaultValue = "0") Float a, @RequestParam (value="b", defaultValue = "0") Float b) {
+		Float sum = a+b;
+		Float decimals = sum - sum.intValue();
+		if(decimals!=0){
+			return sum;
+		}
+		return sum.intValue();
 	}
 
 }
