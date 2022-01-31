@@ -178,6 +178,7 @@ class DemoProjectApplicationTests {
 		void canMultiply(String a, String b, String expected) {
 			assertThat(restTemplate.getForObject("/multiply?a="+a+"&b="+b, String.class))
 					.isEqualTo(expected);
+
 		}
 	}
 
@@ -199,6 +200,7 @@ class DemoProjectApplicationTests {
 			assertThat(restTemplate.getForObject("/div?a="+a+"&b="+b, String.class))
 					.isEqualTo(expected);
 		}
+
 	}
 
 	@Nested
@@ -218,6 +220,7 @@ class DemoProjectApplicationTests {
 		void canSubtract(String a, String b, String expected) {
 			assertThat(restTemplate.getForObject("/subtract?a="+a+"&b="+b, String.class))
 					.isEqualTo(expected);
+
 		}
 	}
 
