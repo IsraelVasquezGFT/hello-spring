@@ -36,4 +36,14 @@ public class DemoProjectApplication {
 		return sum.intValue();
 	}
 
+	@GetMapping("/multiply")
+	public Object multiply(@RequestParam (value="a", defaultValue = "0") Float a, @RequestParam (value="b", defaultValue = "0") Float b) {
+		Float product = a * b;
+		Float decimals = product - product.intValue();
+		if(decimals!=0){
+			return product;
+		}
+		return product.intValue();
+	}
+
 }
