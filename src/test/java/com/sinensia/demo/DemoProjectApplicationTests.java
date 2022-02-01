@@ -149,14 +149,6 @@ class DemoProjectApplicationTests {
 			assertThat(app.canAdd(1.5f, 2f)).isEqualTo(3.5f);
 		}
 
-		/*@Test
-		void addCanAddNull(){
-			Exception thrown = assertThrows(NullPointerException.class, ()->{
-				Float ret = (Float) app.canAdd(null, 2f);
-				assertTrue(thrown.toString().contains("NullPointerException"));
-			});
-		}*/
-
 	}
 
 	@Nested
