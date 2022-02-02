@@ -69,4 +69,21 @@ public class DemoProjectApplication {
 		return product.intValue();
 	}
 
+	//raiz cuadrada
+	@GetMapping("/sqrt")
+	public Object sqrt(@RequestParam (value="a", defaultValue = "0") Float a) {
+		Float product = (float) Math.sqrt(a);
+		Float decimals = product - product.intValue();
+		if(decimals!=0){
+			return product;
+		}
+		return product.intValue();
+	}
+
+	/*@GetMapping("/sqrt")
+	public Float sqrt2(Float a){
+		Float parseA = (float) Math.sqrt(a);
+		return parseA;
+	}*/
+
 }
