@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @AutoConfigureWebTestClient
 class DemoProjectApplicationTests {
 
-	@Autowired TestRestTemplate restTemplate;
+	@Autowired transient TestRestTemplate restTemplate;
 
 	@Test
 	void contextLoads() {
@@ -131,13 +131,11 @@ class DemoProjectApplicationTests {
 
 		@Test
 		void canAddFloatException() {
-			Exception thrown = assertThrows(RestClientException.class, ()->{
-				restTemplate.getForObject("/add?a=hola&b=2", Float.class);
-			});
+			assertThrows(RestClientException.class, () -> restTemplate.getForObject("/add?a=hola&b=2", Float.class));
 		}
 
 		@Autowired
-		private DemoProjectApplication app;
+		private transient DemoProjectApplication app;
 
 		@Test
 		void appCanAddReturnsInteger(){
@@ -221,7 +219,9 @@ class DemoProjectApplicationTests {
 		@ParameterizedTest(name="[{index}] {0} = {1}")
 		@CsvSource({
 				"25,	5",
-				"100,	10"
+				"100,	10",
+				"0,	0"
+
 		})
 		void canSqrt(String a, String expected) {
 			assertThat(restTemplate.getForObject("/sqrt?a="+a, String.class))
