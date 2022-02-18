@@ -52,7 +52,7 @@ class DemoProjectApplicationTests {
 
 	@Nested
 	@DisplayName("Application tests")
-	class appTests {
+	class apptests {
 
 		@Test
 		void canAdd(@Autowired TestRestTemplate restTemplate) {
